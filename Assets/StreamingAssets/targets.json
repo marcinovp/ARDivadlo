@@ -1,0 +1,16 @@
+{
+  "images" :
+  [
+    {
+      "image": "3-8-round-pea-gravel.jpg",
+      "name": "gravel"
+    },
+    {
+      "image": "building_PNG25.png",
+      "name": "building_demo",
+      "size": [ 7.75, 4.22 ],
+      "uid": "uid-string, should NOT duplicate",
+      "meta": "what ever string you like."
+    }
+  ]
+}
