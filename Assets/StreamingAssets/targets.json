@@ -1,6 +1,5 @@
 {
-  "images" :
-  [
+  "images": [
     {
       "image": "3-8-round-pea-gravel.jpg",
       "name": "gravel"
@@ -11,6 +10,54 @@
       "size": [ 7.75, 4.22 ],
       "uid": "uid-string, should NOT duplicate",
       "meta": "what ever string you like."
+    },
+    {
+      "image": "00 intro.png",
+      "name": "00 intro"
+    },
+    {
+      "image": "01 europa.png",
+      "name": "01 europa"
+    },
+    {
+      "image": "02 vyrezana.png",
+      "name": "02 vyrezana"
+    },
+    {
+      "image": "02 vyrezana 2.png",
+      "name": "02 vyrezana 2"
+    },
+    {
+      "image": "02.png",
+      "name": "02"
+    },
+    {
+      "image": "04.png",
+      "name": "04"
+    },
+    {
+      "image": "04 zblizky.png",
+      "name": "04 zblizky"
+    },
+    {
+      "image": "05.png",
+      "name": "05"
+    },
+    {
+      "image": "06.png",
+      "name": "06"
+    },
+    {
+      "image": "07 detail.png",
+      "name": "07"
+    },
+    {
+      "image": "08b_2.png",
+      "name": "08"
+    },
+    {
+      "image": "09_2.png",
+      "name": "09"
     }
   ]
 }
