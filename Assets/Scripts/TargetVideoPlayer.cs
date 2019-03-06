@@ -13,7 +13,7 @@ public class TargetVideoPlayer : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Awake");
+        //Debug.Log("Awake");
         videoPlayer = GetComponent<VideoPlayer>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
@@ -21,9 +21,17 @@ public class TargetVideoPlayer : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
+        videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
         imageTargetBehaviour.TargetFound += ImageTargetBehaviour_TargetFound;
         imageTargetBehaviour.TargetLost += ImageTargetBehaviour_TargetLost;
+    }
+
+    private void VideoPlayer_prepareCompleted(VideoPlayer source)
+    {
+        Debug.Log("VideoPlayer_prepareCompleted");
+
+        meshRenderer.enabled = true;
     }
     
     private void ImageTargetBehaviour_TargetLost(TargetAbstractBehaviour obj)
@@ -37,6 +45,10 @@ public class TargetVideoPlayer : MonoBehaviour
     {
         Debug.Log("Target found");
         videoPlayer.Play();
-        meshRenderer.enabled = true;
+
+        if (videoPlayer.isPrepared)
+        {
+            meshRenderer.enabled = true;
+        }
     }
 }
