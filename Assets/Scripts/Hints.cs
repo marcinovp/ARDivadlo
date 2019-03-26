@@ -1,11 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Hints : MonoBehaviour
 {
     public Image hintImage;
+    public Toggle hintToggle;
+    public float delayTargetFound = 0.5f;
+    public EasyTween[] hintAnimations;
     public List<HintPair> hintPairs;
+
+    private Coroutine delayCoroutine;
+    private int currentHintIndex = -1;
 
     void Start()
     {
@@ -13,17 +21,54 @@ public class Hints : MonoBehaviour
         {
             int index = i;
             hintPairs[i].target.TargetFound += (x) => Target_TargetFound(index);
+            hintPairs[i].target.TargetLost += (x) => Target_TargetLost(index);
         }
 
-        SetHint(0);
+        currentHintIndex = 0;
+        SetHint(currentHintIndex);
+    }
+
+    public void ShowHint(bool value)
+    {
+        hintToggle.isOn = value;
+    }
+
+    public void HintToggleValueChanged(bool value)
+    {
+        if (value)
+        {
+            SetHint(currentHintIndex);
+        }
+
+        foreach (var item in hintAnimations)
+        {
+            item.OpenCloseObjectAnimation(value);
+        }
     }
 
     private void Target_TargetFound(int index)
     {
-        int hintIndex = index + 1;
-        Debug.Log("Target_TargetFound, index: " + index + ", hintujem index: " + hintIndex);
+        if (delayCoroutine != null)
+            StopCoroutine(delayCoroutine);
 
-        SetHint(hintIndex);
+        StartCoroutine(DelayAction(delayTargetFound,
+            delegate
+            {
+                currentHintIndex = index + 1;
+                if (currentHintIndex >= hintPairs.Count)
+                    currentHintIndex = 0;
+
+                Debug.Log("Target_TargetFound, index: " + index + ", hintujem index: " + currentHintIndex);
+
+                ShowHint(false);
+            }));
+    }
+
+    private void Target_TargetLost(int index)
+    {
+        if (delayCoroutine != null)
+            StopCoroutine(delayCoroutine);
+        delayCoroutine = null;
     }
 
     private void SetHint(int index)
@@ -36,6 +81,12 @@ public class Hints : MonoBehaviour
         {
             hintImage.sprite = null;
         }
+    }
+
+    private IEnumerator DelayAction(float delaySeconds, Action action)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        action();
     }
 }
 
