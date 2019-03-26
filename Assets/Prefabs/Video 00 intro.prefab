@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageTargetBehaviour: {fileID: 0}
+  startFromTime: 0
 --- !u!328 &328598079742709914
 VideoPlayer:
   m_ObjectHideFlags: 1
@@ -116,7 +117,7 @@ VideoPlayer:
   m_AspectRatio: 3
   m_DataSource: 0
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
   m_Url: file://D:/Unity Projects/ARDivadlo/Assets/Videa/test1-render-alpha-canal-only.mov
