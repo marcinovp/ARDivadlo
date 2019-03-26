@@ -7,6 +7,7 @@ using UnityEngine.Video;
 public class TargetVideoPlayer : MonoBehaviour
 {
     public ImageTargetBaseBehaviour imageTargetBehaviour;
+    public float startFromTime = 0f;
 
     private VideoPlayer videoPlayer;
     private MeshRenderer meshRenderer;
@@ -22,6 +23,7 @@ public class TargetVideoPlayer : MonoBehaviour
     private void Start()
     {
         //Debug.Log("Start");
+        videoPlayer.time = startFromTime;
         videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
         imageTargetBehaviour.TargetFound += ImageTargetBehaviour_TargetFound;
         imageTargetBehaviour.TargetLost += ImageTargetBehaviour_TargetLost;
