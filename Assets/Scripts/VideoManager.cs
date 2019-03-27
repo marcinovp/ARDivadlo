@@ -16,18 +16,18 @@ public class VideoManager : MonoBehaviour
         for (int i = 0; i < imageTargetBehaviour.Count; i++)
         {
             int index = i;
-            imageTargetBehaviour[i].TargetFound += (x) => Target_TargetFound(imageTargetBehaviour[i]);
+            imageTargetBehaviour[i].TargetFound += (x) => Target_TargetFound(imageTargetBehaviour[index]);
             //videos[i].imageTargetBehaviour.TargetLost += (x) => Target_TargetLost(index);
         }
     }
 
     private void Target_TargetFound(ImageTargetBaseBehaviour imageTargetFound)
     {
-        foreach (var item in targetVideoPlayers)
+        foreach (var targetVideoPlayer in targetVideoPlayers)
         {
-            if (item != null && item.imageTargetBehaviour == imageTargetFound)
+            if (targetVideoPlayer.imageTargetBehaviour != imageTargetFound)
             {
-                item.VideoPlayer?.Stop();
+                targetVideoPlayer.VideoPlayer.Stop();
             }
         }
     }
