@@ -56,7 +56,10 @@ public class Hints : MonoBehaviour
             {
                 currentHintIndex = index + 1;
                 if (currentHintIndex >= hintPairs.Count)
+                {
                     currentHintIndex = 0;
+                    hintToggle.gameObject.SetActive(false);
+                }
 
                 Debug.Log("Target_TargetFound, index: " + index + ", hintujem index: " + currentHintIndex);
 
