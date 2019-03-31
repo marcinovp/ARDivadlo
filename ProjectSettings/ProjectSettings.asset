@@ -154,7 +154,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: sk.marcinov.ardivadlo
   buildNumber: {}
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 4
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
